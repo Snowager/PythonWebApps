@@ -1,38 +1,37 @@
+from django.shortcuts import render
 from django.views.generic import TemplateView
 
+# Create your views here.
 
 class IndexView(TemplateView):
     template_name = 'heroes.html'
 
-
-class HulkView(TemplateView):
-    template_name = 'hero.html'
-
-    def get_context_data(self, **kwargs):
-        return {
-            'title': 'Hulk',
-            'body': 'My name is Bruce Banner',
-            'image': '/static/images/hulk.jpg'
-        }
-
-
-class IronManView(TemplateView):
+class JackView(TemplateView):
     template_name = "hero.html"
-
+    
     def get_context_data(self, **kwargs):
         return {
-            'title': 'Iron Man',
-            'body': 'My name is Tony Stark, but I am Iron Man',
-            'image': '/static/images/iron_man.jpg'
-        }
+        "title" : "Jack Frost",
+        "body" : "My name is Jack Frost, and I might just be Buddha incarnate.",
+        "image" : '/static/images/jackFrost.jpg',
+    }
 
-
-class BlackWidow(TemplateView):
-    template_name = 'hero.html'
-
+class BigbyWolfView(TemplateView):
+    template_name = "hero.html"
+    
     def get_context_data(self, **kwargs):
         return {
-            'title': 'Black Widow',
-            'body': 'My name is Natasha Romanova',
-            'image': '/static/images/black_widow.jpg'
-        }
+        'title' : "Bigby Wolf",
+        'body' : "My name is Bibgy Wolf, and I work to secure and protect Fables.",
+        'image' : '/static/images/bigbyWolf.jpg'
+    }
+
+class SpawnView(TemplateView):
+    template_name = "hero.html"
+    
+    def get_context_data(self, **kwargs):
+        return {
+        "title" : "Spawn",
+        "body" : "My name is Spawn, and I fight in Hell",
+        "image" : '/static/images/spawn.jpg',
+    }
