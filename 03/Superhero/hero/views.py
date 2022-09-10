@@ -22,7 +22,7 @@ class BigbyWolfView(TemplateView):
     def get_context_data(self, **kwargs):
         return {
         'title' : "Bigby Wolf",
-        'body' : "My name is Bibgy Wolf, and I work to secure and protect Fables.",
+        'body' : "My name is Bigby Wolf, and I work to secure and protect Fables.",
         'image' : '/static/images/bigbyWolf.jpg'
     }
 
