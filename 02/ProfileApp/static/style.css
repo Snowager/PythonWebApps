@@ -3,6 +3,7 @@ body {}
 body * {
     margin: 0;
     padding: 0;
+    height: auto;
 }
 
 .container {
@@ -19,8 +20,8 @@ h2 {
 }
 
 .panels {
-    min-height: 50vh;
-    overflow: hidden;
+    min-height: 75vh;
+    height: auto;
     display: flex;
     flex-direction: row;
 }
@@ -31,7 +32,7 @@ h2 {
     color: white;
     align-items: center;
     transition:
-        flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+        flex 0.4s cubic-bezier(0.61, -0.19, 0.7, -0.11),
         background 0.2s;
     background-size: cover;
     background-position: center;
@@ -65,7 +66,7 @@ h2 {
 .panel>* {
     margin: 0;
     width: 100%;
-    transition: transform 0.5s;
+    transition: transform 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,5 +74,5 @@ h2 {
 }
 
 .panel.open {
-    flex: 5;
+    flex: 2;
 }
