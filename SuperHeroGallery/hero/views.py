@@ -8,14 +8,13 @@ class HeroDetailView(TemplateView):
     template_name: str = 'hero.html'
 
     def get_context_data(self, **kwargs):
-        name = kwargs['name']
-        image = f"/static/images/{name}"
-        hero = hero_list(name)
-        return {
-            'photo': image,
-            'title': hero['title'],
-            'body' : hero['body'],
-        }
+        link = kwargs['link']
+        print(link)
+        image = f"/static/images/{link}.jpg"
+        new_value = {'photo' : image}
+        hero = hero_list(link)
+        hero.update(new_value)
+        return hero
 
 class HeroListView(TemplateView):
     template_name = 'index.html'
@@ -23,11 +22,11 @@ class HeroListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         heroes = Path('static/images').iterdir()
-        heroes = [f for f in heroes]
+        heroes = [str(f)[14:-4] for f in heroes]
         return dict(heroes=heroes)
 
 def hero_list(name):
-    if name == "bigByWolf.jpg":
+    if name == "bigbyWolf":
         return {
             'title' : "Bigby Wolf",
             'body' : "My name is Bigby Wolf, and I work to secure and protect Fables.",

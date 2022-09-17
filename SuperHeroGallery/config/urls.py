@@ -19,5 +19,5 @@ from hero.views import HeroDetailView, HeroListView
 
 urlpatterns = [
     path('', HeroListView.as_view()),
-    path('<str:name>', HeroDetailView.as_view()),
+    path('<str:link>', HeroDetailView.as_view())
 ]
