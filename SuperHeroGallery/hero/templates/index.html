@@ -1,0 +1,15 @@
+{% extends 'superhero_theme.html' %}
+
+
+
+{% block content %}
+
+{% for hero in heroes %}
+
+<a href="{{ hero }}">
+    <img class="hero" src="/{{ hero }}.jpg" alt="Hero {{ hero }}" width="200", height="200">
+</a>
+
+{% endfor %}
+
+{% endblock content %}
