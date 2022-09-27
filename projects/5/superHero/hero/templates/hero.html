@@ -1,0 +1,26 @@
+{% extends 'theme.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card bg-light text-dark m-5 p-5">
+
+        <img src="{{ hero.image }}" height="600" width="600">
+        <h1>
+            {{ hero.name }}
+        </h1>
+        <p>
+            {{ hero.description }}
+        </p>
+
+    </div>
+
+    <div class="bg-dark text-light">
+        <a href="/admin/" class="btn bg-success text-light m-5">Admin Views</a>
+        <a href="/" class="btn bg-success text-light m-5">All Heroes</a>
+    </div>
+</div>
+
+
+{% endblock content %}
