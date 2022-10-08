@@ -1,0 +1,38 @@
+<div class="card col-lg">
+
+    <div class="card-header person">
+        Hero
+    </div>
+    <div class="card-body">
+
+
+        <table class="table">
+            <tr>
+                <td>Name</td>
+                <td><a href="/Hero/{{ hero.pk }}/">{{ object.name }}</a></td>
+            </tr>
+            <tr>
+                <td>Alias</td>
+                <td>{{ object.alias }}</td>
+            </tr>
+            <tr>
+                <td>Strength</td>
+                <td>{{ object.strength }}</td>
+            </tr>
+            <tr>
+                <td>Weakness</td>
+                <td>{{ object.weakness }}</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>{{ object.description }}</td>
+            </tr>
+        </table>
+
+        <p>
+            <a href="/Hero/add" class="btn btn-success m-5">Add New Hero</a>
+            <a href="/Hero/" class="btn btn-success m-5">Back to Heroes</a>
+        </p>
+    </div>
+
+</div>

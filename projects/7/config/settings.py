@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nvys-01qj9c116l03gw8=(0s2e@$%9wuw#^az9zx@sf^(!m&+4'
+SECRET_KEY = 'django-insecure-k3gk0k)@6=-k6kl%$qdnukd2r7!gqcmu(aahron#n5o0nayc=6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hero',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = '.urls'
+ROOT_URLCONF = 'hero.urls'
 
 TEMPLATES = [
     {
@@ -120,6 +121,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = 'static_assets/'
 
+MEDIA_ROOT = [BASE_DIR / 'static/']
+
+print(MEDIA_ROOT)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
