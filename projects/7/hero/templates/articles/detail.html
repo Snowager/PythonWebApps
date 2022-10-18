@@ -1,0 +1,22 @@
+{% extends 'theme.html' %}
+{% load tz %}
+
+{% block content %}
+<br>
+<h1>{{ article.title|title }}</h1>
+<h3>by {{ article.created_by.username }}</h3>
+<p>Created {{ article.created|timezone:"America/Denver" }}, Last Modified {{ article.modified|timezone:"America/Denver" }}</p>
+<br><hr><br><br>
+
+<br>
+<p>{{ article.content }}</p>
+<br>
+
+{% if request.user.username == article.created_by.username%}
+<a class="btn btn-outline-danger m-5" href="{{ article.pk }}/">Edit Article</a>
+<a class="btn btn-outline-danger m-5" href="{{ article.pk }}/delete">Delete Article</a>
+{% endif %}
+
+<br><br><hr>
+<a href="/articles">Back to Articles List</a>
+{% endblock content %}
