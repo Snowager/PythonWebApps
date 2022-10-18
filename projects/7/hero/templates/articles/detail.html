@@ -13,7 +13,7 @@
 <br>
 
 {% if request.user.username == article.created_by.username%}
-<a class="btn btn-outline-danger m-5" href="{{ article.pk }}/">Edit Article</a>
+<a class="btn btn-outline-success m-5" href="{{ article.pk }}/">Edit Article</a>
 <a class="btn btn-outline-danger m-5" href="{{ article.pk }}/delete">Delete Article</a>
 {% endif %}
 
