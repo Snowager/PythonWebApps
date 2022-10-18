@@ -3,11 +3,9 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, RedirectView, UpdateView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
-from hero.forms import HeroForm
 from django.shortcuts import render
 
-from .models import Author, Hero
+from .models import Article, Hero
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "registration/account_edit.html"
@@ -51,62 +49,37 @@ class HeroDeleteView(DeleteView):
     success_url = reverse_lazy('Hero_list')
 
 
-def list_heroes(author):
-    return dict(articles=Hero.objects.filter(author=author))
 
 
-def get_author(user):
-    return Author.objects.get_or_create(user=user)[0]
+class ArticleListView(ListView):
+    template_name = 'articles/list.html'
+    model = Article
+    context_object_name = 'articles'
 
 
-class AuthorHomeView(RedirectView):
-    def get_redirect_url(self, *args, **kwargs):
-        if self.request.user.is_anonymous:
-            return '/article/'
-        return f'/author/{get_author(self.request.user).pk}'
+class ArticleDetailView(DetailView):
+    template_name = 'articles/detail.html'
+    model = Article
+    context_object_name = 'article'
 
 
-class AuthorListView(ListView):
-    template_name = 'author_list.html'
-    model = Author
+class ArticleAddView(LoginRequiredMixin, CreateView):
+    template_name = 'articles/add.html'
+    model = Article
+    fields = ['title', 'content']
 
-    def get_context_data(self, **kwargs):
-        kwargs = super().get_context_data(**kwargs)
-        return kwargs
-
-
-class AuthorDetailView(DetailView):
-    template_name = 'author_detail.html'
-    model = Author
-
-    def get_context_data(self, **kwargs):
-        kwargs = super().get_context_data(**kwargs)
-        kwargs.update(list_heroes(kwargs.get('object')))
-        return kwargs
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
 
-class AuthorAddView(CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'registration/account_add.html'
+class ArticleEditView(LoginRequiredMixin, UpdateView):
+    template_name = 'articles/edit.html'
+    model = Article
+    fields = ['title', 'content']
 
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = "registration/account_edit.html"
-    model = User
-    fields = ['first_name', 'last_name', 'username', 'email']
-    success_url = reverse_lazy('author_home')
-
-
-class AuthorUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = "author_edit.html"
-    model = Author
-    fields = '__all__'
-
-
-class AuthorDeleteView(LoginRequiredMixin, DeleteView):
-    model = Author
-    template_name = 'author_delete.html'
-    success_url = reverse_lazy('author_list')
-
-
+class ArticleDeleteView(LoginRequiredMixin, DeleteView):
+    template_name = 'articles/delete.html'
+    model = Article
+    success_url = reverse_lazy('article_list')

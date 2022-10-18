@@ -13,15 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from xml.dom.minidom import Document
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
-from django.views.generic import RedirectView
-from .views import HeroDetailView, HeroCreateView, HeroListView, HeroView, HeroDeleteView, HeroUpdateView, UserCreationForm, UserUpdateView, UpdateView
-from .views import Author, AuthorAddView, AuthorDeleteView, AuthorDetailView, AuthorHomeView, AuthorListView, AuthorUpdateView, get_author
+from .views import HeroDetailView, HeroCreateView, HeroListView, HeroView, HeroDeleteView, HeroUpdateView, UserUpdateView
+from .views import ArticleAddView, ArticleDeleteView, ArticleDetailView, ArticleEditView, ArticleListView
 from users import views as user_views
 
 urlpatterns = [
@@ -41,13 +39,11 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
 
     # Author
-    path('',                           RedirectView.as_view(url='author/home')),
-    path('author/',                    AuthorListView.as_view(),    name='author_list'),
-    path('author/home',                AuthorHomeView.as_view(),    name='author_home'),
-    path('author/<int:pk>',            AuthorDetailView.as_view(),  name='author_detail'),
-    path('author/add/',                AuthorAddView.as_view(),     name='author_add'),
-    path('author/<int:pk>/',           AuthorUpdateView.as_view(),  name='author_edit'),
-    path('author/<int:pk>/delete',     AuthorDeleteView.as_view(),  name='author_delete'),
+    path('articles/', ArticleListView.as_view(), name='article_list'),
+    path('articles/<int:pk>', ArticleDetailView.as_view(), name='article_detail'),
+    path('articles/add', ArticleAddView.as_view(), name='article_add'),
+    path('articles/<int:pk>/', ArticleEditView.as_view(), name='article_edit'),
+    path('articles/<int:pk>/delete', ArticleDeleteView.as_view(), name='article_delete'),
 
     # Hero
     path('Hero/',                HeroListView.as_view(),    name='Hero_list'),

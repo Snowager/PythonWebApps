@@ -2,19 +2,22 @@
 
     <div class="container">
 
-        <a class="navbar-brand text-light" href="/">Superheroes</a>
+        <a class="navbar-brand text-light" href="/">Superhero News</a>
 
         <ul class="navbar-nav text-light ml-auto">
             <li class="nav-item">
-                <a class="nav-link text-light" href="{% url 'author_list' %}">Authors</a>
+                <a class="nav-link text-light" href="{% url 'Hero_list' %}">Heroes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="{% url 'Hero_list' %}">Heroes</a>
+                <a class="nav-link text-light" href="{% url 'article_list' %}">Articles</a>
             </li>
 
             {% if user.is_authenticated %}
 
 
+            <li class="nav-item">
+                <a class="nav-link  text-light" href="{% url 'article_add' %}">Write Article</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link  text-light" href="{% url 'profile' %}">Profile</a>
             </li>
