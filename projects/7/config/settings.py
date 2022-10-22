@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-k3gk0k)@6=-k6kl%$qdnukd2r7!gqcmu(aahron#n5o0nayc=6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -84,14 +84,11 @@ DATABASES = {
     }
 }
 
-print(DATABASES)
-
 POSTGRES_DB = os.environ.get("POSTGRES_DB")
 POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
 POSTGRES_USER = os.environ.get("POSTGRES_USER")
 POSTGRES_HOST = os.environ.get("POSTGRES_HOST")
 POSTGRES_PORT = os.environ.get("POSTGRES_PORT")
-print("port: ", POSTGRES_PORT)
 
 POSTGRES_READY = (
     POSTGRES_DB is not None

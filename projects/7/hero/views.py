@@ -30,7 +30,7 @@ class HeroDetailView(DetailView):
     context_object_name =  'hero'
 
 
-class HeroCreateView(CreateView):
+class HeroCreateView(LoginRequiredMixin, CreateView):
     template_name =  "Hero/add.html"
     model = Hero
     fields = '__all__'
