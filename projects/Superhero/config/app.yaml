@@ -1,0 +1,63 @@
+databases:
+- engine: PG
+  name: mydb
+  num_nodes: 1
+  size: db-s-dev-database
+  version: "12"
+name: sea-turtle-app
+region: nyc
+services:
+- environment_slug: python
+  envs:
+  - key: DATABASE_URL
+    scope: RUN_TIME
+    value: ${mydb.DATABASE_URL}
+  - key: POSTGRES_DB
+    scope: RUN_AND_BUILD_TIME
+    value: ${mydb.DATABASE}
+  - key: POSTGRES_HOST
+    scope: RUN_AND_BUILD_TIME
+    value: ${mydb.HOSTNAME}
+  - key: POSTGRES_USER
+    scope: RUN_AND_BUILD_TIME
+    value: ${mydb.USERNAME}
+  - key: POSTGRES_PASSWORD
+    scope: RUN_AND_BUILD_TIME
+    value: ${mydb.PASSWORD}
+  - key: POSTGRES_PORT
+    scope: RUN_AND_BUILD_TIME
+    value: ${mydb.PORT}
+  - key: DJANGO_SUPERUSER_EMAIL
+    scope: RUN_AND_BUILD_TIME
+    value: ladboy@boi.com
+  - key: DJANGO_SUPERUSER_USERNAME
+    scope: RUN_AND_BUILD_TIME
+    value: ladboy
+  - key: DJANGO_SUPERUSER_PASSWORD
+    scope: RUN_AND_BUILD_TIME
+    value: boi321890
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: Snowager/PythonWebApps
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: pythonwebapps-03-superhero
+  routes:
+  - path: /
+  run_command: |-
+    python manage.py migrate --no-input
+    python manage.py createsuperuser --noinput
+    gunicorn --worker-tmp-dir /dev/shm config.wsgi
+  source_dir: projects/7
+static_sites:
+- environment_slug: html
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: Snowager/PythonWebApps
+  name: pythonwebapps-03-superhero-stati
+  routes:
+  - path: /static
+  source_dir: projects/7/static
