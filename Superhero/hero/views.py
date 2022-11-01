@@ -1,5 +1,5 @@
-from urllib import request
 from django.urls import reverse_lazy
+from .forms import HeroForm
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, RedirectView, UpdateView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -34,6 +34,9 @@ class HeroCreateView(LoginRequiredMixin, CreateView):
     template_name =  "Hero/add.html"
     model = Hero
     fields = '__all__'
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
     success_url = reverse_lazy('Hero_list')
 
 class HeroUpdateView(UpdateView):

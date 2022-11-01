@@ -1,34 +1,23 @@
 <div class="card col-lg">
 
     <div class="card-header person">
-        Hero
+        object
     </div>
-    <div class="card-body">
+    <div class="col-lg-12 my-3">
+        <div class="card">
+            <div class="card-header bg-success text-dark">
+                <h2>{{ object.name }}</h2>
+            </div>
+            <img class="card-img-top" src="{{object.image.url}}" alt="{{object.name}}">
+            <div class="card-body text-dark p-5">
+                <p>{{ object.alias }}</p>
+                <p>{{ object.strength }}</p>
+                <p>{{ object.weakness }}</p>
+                <p>{{ object.description }}</p>
+            </div>
 
 
-        <table class="table">
-            <tr>
-                <td>Name</td>
-                <td><a href="/Hero/{{ hero.pk }}/">{{ object.name }}</a></td>
-            </tr>
-            <tr>
-                <td>Alias</td>
-                <td>{{ object.alias }}</td>
-            </tr>
-            <tr>
-                <td>Strength</td>
-                <td>{{ object.strength }}</td>
-            </tr>
-            <tr>
-                <td>Weakness</td>
-                <td>{{ object.weakness }}</td>
-            </tr>
-            <tr>
-                <td>Description</td>
-                <td>{{ object.description }}</td>
-            </tr>
-        </table>
-
+        </div>
         <p>
             <a href="/Hero/add" class="btn btn-success m-5">Add New Hero</a>
             <a href="/Hero/" class="btn btn-success m-5">Back to Heroes</a>

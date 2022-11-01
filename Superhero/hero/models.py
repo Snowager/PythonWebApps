@@ -11,7 +11,7 @@ class Hero(models.Model):
     strength = models.CharField(max_length=200, null=True)
     weakness = models.CharField(max_length=200, null=True)
     description = models.TextField()
-    #image = models.ImageField(upload_to=settings.MEDIA_ROOT, null=True)
+    image = models.ImageField(default='default.png', upload_to='hero_pics')
 
     def __str__(self):
         return f'{self.name}'
@@ -24,4 +24,4 @@ class Article(models.Model):
     content = models.TextField(default="Article body")
 
     def get_absolute_url(self):
-        return reverse_lazy('article_list')
+        return reverse_lazy('Article_list')

@@ -18,8 +18,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
-from .views import HeroDetailView, HeroCreateView, HeroListView, HeroView, HeroDeleteView, HeroUpdateView, UserUpdateView
-from .views import ArticleAddView, ArticleDeleteView, ArticleDetailView, ArticleEditView, ArticleListView
+from hero.views import HeroDetailView, HeroCreateView, HeroListView, HeroView, HeroDeleteView, HeroUpdateView, UserUpdateView
+from hero.views import ArticleAddView, ArticleDeleteView, ArticleDetailView, ArticleEditView, ArticleListView
 from users import views as user_views
 
 urlpatterns = [
