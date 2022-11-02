@@ -74,12 +74,14 @@ class ArticleAddView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
+    success_url = reverse_lazy('Hero_list')
 
 
 class ArticleEditView(LoginRequiredMixin, UpdateView):
     template_name = 'articles/edit.html'
     model = Article
     fields = ['title', 'content']
+    success_url = reverse_lazy('Hero_list')
 
 
 class ArticleDeleteView(LoginRequiredMixin, DeleteView):
