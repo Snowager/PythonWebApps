@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Blue Beetle",
+        "alias": "James",
+        "strength": "Nuclear Weapons",
+        "weakness": "The moon",
+        "description": "The Blue Beetle",
+        "image": "default.png"
+    },
+    {
+        "id": 2,
+        "name": "Bigby Wolf",
+        "alias": "Big Bad Wolf",
+        "strength": "Detective Work",
+        "weakness": "Drinking",
+        "description": "The Big Bad wolf from fable.",
+        "image": "default.png"
+    },
+    {
+        "id": 3,
+        "name": "Bigby Wolf",
+        "alias": "Big Bad Wolf",
+        "strength": "Detective Work",
+        "weakness": "Drinking",
+        "description": "jopojpo",
+        "image": "default.png"
+    },
+    {
+        "id": 4,
+        "name": "a",
+        "alias": "s",
+        "strength": "d",
+        "weakness": "f",
+        "description": "g",
+        "image": "hero_pics/bigbyWolf.jpg"
+    },
+    {
+        "id": 5,
+        "name": "a",
+        "alias": "s",
+        "strength": "d",
+        "weakness": "f",
+        "description": "g",
+        "image": "hero_pics/bigbyWolf_sf5gQ9N.jpg"
+    }
+]

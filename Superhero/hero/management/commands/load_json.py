@@ -5,10 +5,9 @@ from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        load_data()
+        load_json()
 
-def load_data():
-
+def load_json():
     Hero.objects.all().delete()
     Article.objects.all().delete()
 
