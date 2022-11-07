@@ -1,0 +1,26 @@
+<div class="card col-lg">
+
+    <table class="table table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Alias</th>
+            <th>Strength</th>
+            <th>Weakness</th>
+        </tr>
+
+        {% for hero in heroes %}
+        <tr>
+            <td><a href=" {{hero.pk}} ">{{ hero.name }}</a></td>
+            <td>{{ hero.alias }}</td>
+            <td>{{ hero.strength }}</td>
+            <td>{{ hero.weakness }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <p>
+        <a href="/Hero/add" class="btn btn-success m-5">Add New Hero</a>
+    </p>
+
+</div>

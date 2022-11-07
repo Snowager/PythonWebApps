@@ -20,6 +20,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from hero.views import HeroDetailView, HeroCreateView, HeroListView, HeroView, HeroDeleteView, HeroUpdateView, UserUpdateView
 from hero.views import ArticleAddView, ArticleDeleteView, ArticleDetailView, ArticleEditView, ArticleListView
+from photo.views import PhotoUpdateView, PhotoDetailView, PhotoCreateView, PhotoDeleteView, PhotoListView
 from users import views as user_views
 
 urlpatterns = [
@@ -51,6 +52,13 @@ urlpatterns = [
     path('Hero/add',             HeroCreateView.as_view(),  name='Hero_add'),
     path('Hero/<int:pk>/',       HeroUpdateView.as_view(),  name='Hero_edit'),
     path('Hero/<int:pk>/delete', HeroDeleteView.as_view(),  name='Hero_delete'),
+
+    # Photo
+    path('photo/',                PhotoListView.as_view(),    name='photo_list'),
+    path('photo/<int:pk>',        PhotoDetailView.as_view(),  name='photo_detail'),
+    path('photo/add',             PhotoCreateView.as_view(),  name='photo_add'),
+    path('photo/<int:pk>/',       PhotoUpdateView.as_view(),  name='photo_edit'),
+    path('photo/<int:pk>/delete', PhotoDeleteView.as_view(),  name='photo_delete'),
 ] 
 
 if settings.DEBUG:

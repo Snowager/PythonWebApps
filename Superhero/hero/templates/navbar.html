@@ -11,12 +11,21 @@
             <li class="nav-item">
                 <a class="nav-link text-light" href="{% url 'article_list' %}">Articles</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'photo_list' %}">Photos</a>
+            </li>
 
             {% if user.is_authenticated %}
 
 
             <li class="nav-item">
+                <a class="nav-link  text-light" href="{% url 'Hero_add' %}">Add Hero</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link  text-light" href="{% url 'article_add' %}">Write Article</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  text-light" href="{% url 'photo_add' %}">Upload Photo</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link  text-light" href="{% url 'profile' %}">Profile</a>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from photo.models import Image
 from django.urls import reverse_lazy
 
 from config import settings
@@ -11,7 +12,7 @@ class Hero(models.Model):
     strength = models.CharField(max_length=200, null=True)
     weakness = models.CharField(max_length=200, null=True)
     description = models.TextField()
-    image = models.ImageField(default='default.png', upload_to='hero_pics')
+    photo = models.ForeignKey(Image, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name}'
@@ -22,6 +23,7 @@ class Article(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     content = models.TextField(default="Article body")
+    photo = models.ForeignKey(Image, null=True, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse_lazy('Article_list')
