@@ -24,12 +24,9 @@
         {% endfor %}
 
     </table>
-
-    {% if request.user.username == article.created_by.username%}
     <p>
         <a href="add" class="btn btn-outline-success m-5">Add New Article</a>
     </p>
-    {% endif %}
 
 </div>
 
