@@ -1,0 +1,42 @@
+{% if carousel %}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+
+        {% for photo in carousel %}
+
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ photo.id }}"
+            class="{{ photo.active }}" aria-label="Photo {{ photo.id }}" {{ photo.aria }}>
+        </button>
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="carousel-inner">
+
+        {% for photo in carousel %}
+
+        <div class="carousel-item {{ photo.active }}">
+            <img class="d-block w-100" src="{{ photo.image_url }}" alt="{{ photo.label }}">
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+{% endif %}

@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from hero.views import HeroDetailView, HeroCreateView, HeroListView, HeroView, HeroDeleteView, HeroUpdateView, UserUpdateView
 from hero.views import ArticleAddView, ArticleDeleteView, ArticleDetailView, ArticleEditView, ArticleListView
-from photo.views import PhotoUpdateView, PhotoDetailView, PhotoCreateView, PhotoDeleteView, PhotoListView
+from photo.views import PhotoUpdateView, PhotoDetailView, PhotoCreateView, PhotoDeleteView, PhotoListView, PhotoCarouselView
 from users import views as user_views
 
 urlpatterns = [
@@ -32,18 +32,18 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # User
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/<int:pk>/',          UserUpdateView.as_view(),  name='user_edit'),
-    path('register/', user_views.register, name='register'),
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
-    path('profile/', user_views.profile, name='profile'),
+    path('accounts/',                    include('django.contrib.auth.urls')),
+    path('accounts/<int:pk>/',   UserUpdateView.as_view(),  name='user_edit'),
+    path('register/',            user_views.register, name='register'),
+    path('login/',               auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/',              auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    path('profile/',             user_views.profile, name='profile'),
 
-    # Author
-    path('articles/', ArticleListView.as_view(), name='article_list'),
-    path('articles/<int:pk>', ArticleDetailView.as_view(), name='article_detail'),
-    path('articles/add', ArticleAddView.as_view(), name='article_add'),
-    path('articles/<int:pk>/', ArticleEditView.as_view(), name='article_edit'),
+    # Article
+    path('articles/',                ArticleListView.as_view(), name='article_list'),
+    path('articles/<int:pk>',        ArticleDetailView.as_view(), name='article_detail'),
+    path('articles/add',             ArticleAddView.as_view(), name='article_add'),
+    path('articles/<int:pk>/',       ArticleEditView.as_view(), name='article_edit'),
     path('articles/<int:pk>/delete', ArticleDeleteView.as_view(), name='article_delete'),
 
     # Hero
@@ -59,6 +59,9 @@ urlpatterns = [
     path('photo/add',             PhotoCreateView.as_view(),  name='photo_add'),
     path('photo/<int:pk>/',       PhotoUpdateView.as_view(),  name='photo_edit'),
     path('photo/<int:pk>/delete', PhotoDeleteView.as_view(),  name='photo_delete'),
+
+    # Carousel Display
+    path('photo/carousel',        PhotoCarouselView.as_view(), name='photo_carousel'),
 ] 
 
 if settings.DEBUG:
