@@ -21,6 +21,7 @@ from django.urls import path, include
 from hero.views import HeroDetailView, HeroCreateView, HeroListView, HeroView, HeroDeleteView, HeroUpdateView, UserUpdateView
 from hero.views import ArticleAddView, ArticleDeleteView, ArticleDetailView, ArticleEditView, ArticleListView
 from photo.views import PhotoUpdateView, PhotoDetailView, PhotoCreateView, PhotoDeleteView, PhotoListView, PhotoCarouselView
+from messenger.views_message import MessageCreateView, MessageDeleteView, MessageDetailView, MessageListView, MessageUpdateView 
 from users import views as user_views
 
 urlpatterns = [
@@ -62,6 +63,14 @@ urlpatterns = [
 
     # Carousel Display
     path('photo/carousel',        PhotoCarouselView.as_view(), name='photo_carousel'),
+
+    # Messenger
+    path('message/',                       MessageListView.as_view(),    name='message_list'),
+    path('message/<int:pk>',               MessageDetailView.as_view(),  name='message_detail'),
+    path('message/add',                    MessageCreateView.as_view(),  name='message_add'),
+    path('message/<int:pk>/',              MessageUpdateView.as_view(),  name='message_edit'),
+    path('message/<int:pk>/delete',        MessageDeleteView.as_view(),  name='message_delete'),
+
 ] 
 
 if settings.DEBUG:

@@ -1,0 +1,20 @@
+{% extends 'theme.html' %}
+
+
+{% block title %}
+    List of Persons
+{% endblock title %}
+
+
+{% block content %}
+
+    <h1>My Persons</h1>
+
+    <div class="row">
+
+        {% include 'person/_persons.html' %}
+
+    </div>
+
+{% endblock content %}
+
